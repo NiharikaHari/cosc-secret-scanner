@@ -1,0 +1,26 @@
+{
+  "name": "secret-scanner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Scans files and GitHub repositories for accidentally exposed secrets (API keys, passwords, tokens, credentials).",
+  "bin": {
+    "secret-scanner": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && chmod +x dist/cli.js",
+    "dev": "tsx src/cli.ts",
+    "test": "tsx --test test/*.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  }
+}
