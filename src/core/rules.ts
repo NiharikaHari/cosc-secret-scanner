@@ -119,7 +119,7 @@ export const RULES: Rule[] = [
   {
     id: "generic-api-key",
     name: "Generic API Key",
-    regex: /\bapi[_-]?key\s*[:=]\s*['"]?([A-Za-z0-9_\-]{16,})['"]?/gid,
+    regex: /\bapi[_-]?key\s*[:=]\s*['"]?([A-Za-z0-9_-]{16,})['"]?/gid,
     severity: "medium",
     valueGroup: 1,
   },

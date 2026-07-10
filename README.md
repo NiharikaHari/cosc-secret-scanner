@@ -94,6 +94,27 @@ npm test
 Runs the `node:test` suite (rule matching, entropy thresholds, file/directory
 scanning against `test/fixtures`, and unified-diff parsing).
 
+## Continuous Integration
+
+`.github/workflows/ci.yml` runs on every push to `main` and on every pull
+request targeting `main`. It has four jobs, all running in parallel:
+
+- **build-and-test** - installs dependencies (`npm ci`), builds the
+  TypeScript sources (`npm run build`), and runs the test suite (`npm test`)
+  on Node 18, 20, and 22 to catch version-specific issues early.
+- **lint** - runs `npm run lint` (oxlint) to catch unused variables, useless
+  escapes, and similar issues; `test/fixtures/**` is excluded via
+  `.oxlintrc.json` since those files intentionally contain fake secrets and
+  unused declarations for the test suite to scan.
+- **audit** - runs `npm audit --audit-level=moderate` to flag known
+  vulnerabilities in dependencies.
+- **self-scan** - builds the CLI and runs it against this repo's own source
+  (`node dist/cli.js scan . --fail-on high`), since a secret scanner that
+  hasn't scanned itself isn't proving much.
+
+Any job failing turns the check red on the commit/PR; there's nothing else to
+set up - it runs automatically once the workflow file is on GitHub.
+
 ## Limitations
 
 - Regex/entropy-based only - no ML, so it can both miss creatively-formatted
