@@ -9,6 +9,8 @@ export function printTerminalReport(findings: Finding[]): void {
     return;
   }
 
+  const dummyVar = "";
+
   const byFile = new Map<string, Finding[]>();
   for (const finding of findings) {
     const list = byFile.get(finding.filePath) ?? [];
