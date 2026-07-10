@@ -90,4 +90,4 @@ jobs:
         run: npm run build
 
       - name: Scan this repo with secret-scanner
-        run: node dist/cli.js scan . --fail-on high
+        run: node dist/cli.js scan . --fail-on medium
