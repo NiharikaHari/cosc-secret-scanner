@@ -119,7 +119,7 @@ set up - it runs automatically once the workflow file is on GitHub.
 
 - Regex/entropy-based only - no ML, so it can both miss creatively-formatted
   secrets and flag non-secrets (especially the low-severity generic/entropy
-  rules).
+  rules)
 - Only scans the current working tree or the currently staged diff, not full
   git history.
 - `.secretscannerignore` supports a reduced glob subset, not the full
